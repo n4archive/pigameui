@@ -140,9 +140,9 @@ def run():
                     scene.current.mouse_motion(mousepoint)
             elif e.type == pygame.KEYDOWN:
                 if focus.view:
-                    focus.view.key_down(e.key, e.str)
+                    focus.view.key_down(e.key, e.unicode)
                 else:
-                    scene.current.key_down(e.key, e.str)
+                    scene.current.key_down(e.key, e.unicode)
             elif e.type == pygame.KEYUP:
                 if focus.view:
                     focus.view.key_up(e.key)

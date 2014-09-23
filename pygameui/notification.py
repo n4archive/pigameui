@@ -1,8 +1,8 @@
 import pygame
 
-import dialog
-import window
-import label
+from . import dialog
+from . import window
+from . import label
 
 
 DOWN = 0
@@ -81,6 +81,6 @@ class NotificationView(dialog.DialogView):
 
 def show_notification(message):
     notification = NotificationView(message)
-    import scene
+    from . import scene
     scene.current.add_child(notification)
     notification.stylize()

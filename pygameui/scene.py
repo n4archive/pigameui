@@ -1,6 +1,6 @@
-import view
-import window
-import focus
+from . import view
+from . import window
+from . import focus
 
 
 stack = []

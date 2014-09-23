@@ -38,34 +38,34 @@ __version__ = '0.2.0'
 
 import pygame
 
-from alert import *
-from button import *
-from callback import *
-from checkbox import *
-from dialog import *
-from flipbook import *
-from grid import *
-from imagebutton import *
-from imageview import *
-from label import *
-from listview import *
-from notification import *
-from progress import *
-from render import *
-from resource import *
-from scroll import *
-from select import *
-from slider import *
-from spinner import *
-from textfield import *
-from view import *
+from .alert import *
+from .button import *
+from .callback import *
+from .checkbox import *
+from .dialog import *
+from .flipbook import *
+from .grid import *
+from .imagebutton import *
+from .imageview import *
+from .label import *
+from .listview import *
+from .notification import *
+from .progress import *
+from .render import *
+from .resource import *
+from .scroll import *
+from .select import *
+from .slider import *
+from .spinner import *
+from .textfield import *
+from .view import *
 
-import focus
-import window
-import scene
-import theme
+from . import focus
+from . import window
+from . import scene
+from . import theme
 
-from scene import Scene
+from .scene import Scene
 
 
 import logging
@@ -140,9 +140,9 @@ def run():
                     scene.current.mouse_motion(mousepoint)
             elif e.type == pygame.KEYDOWN:
                 if focus.view:
-                    focus.view.key_down(e.key, e.unicode)
+                    focus.view.key_down(e.key, e.str)
                 else:
-                    scene.current.key_down(e.key, e.unicode)
+                    scene.current.key_down(e.key, e.str)
             elif e.type == pygame.KEYUP:
                 if focus.view:
                     focus.view.key_up(e.key)

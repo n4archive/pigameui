@@ -89,29 +89,26 @@ def init(name='', window_size=(640, 480)):
 
 
 def run():
-    assert len(scene.stack) > 0
-
     clock = pygame.time.Clock()
-    down_in_view = None
-
     elapsed = 0
-
     while True:
         dt = clock.tick(60)
-
         elapsed += dt
         if elapsed > 5000:
             elapsed = 0
             logger.debug('%d FPS', clock.get_fps())
-            single_loop_run(dt)
+            if single_loop_run(dt):
+                import sys
+                sys.exit()
 
 
 def single_loop_run(dt):
+    assert len(scene.stack) > 0
+    down_in_view = None
     for e in pygame.event.get():
         if e.type == pygame.QUIT:
             pygame.quit()
-            import sys
-            sys.exit()
+            return True
 
         mousepoint = pygame.mouse.get_pos()
 

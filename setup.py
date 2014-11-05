@@ -37,7 +37,6 @@ setup(
     install_requires=['setuptools'],
     packages=['pygameui'],
     package_data={'pygameui': ['resources/*/*']},
-    scripts=['bin/pygameui-kitchensink.py'],
     description='GUI framework for Pygame',
     keywords="UI GUI Pygame button scrollbar progress slider user interface",
     license='MIT',

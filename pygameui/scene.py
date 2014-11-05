@@ -7,6 +7,10 @@ stack = []
 current = None
 
 
+def insert(position, scene):
+    stack.insert(position, scene)
+
+
 def push(scene):
     global current
     stack.append(scene)

@@ -33,7 +33,7 @@ AUTHOR = 'Brian Hammond <brian@fictorial.com>'
 COPYRIGHT = 'Copyright (C) 2012 Fictorial LLC.'
 LICENSE = 'MIT'
 
-__version__ = '0.2.1'
+__version__ = '0.2.2'
 
 
 import pygame
@@ -103,53 +103,55 @@ def run():
         if elapsed > 5000:
             elapsed = 0
             logger.debug('%d FPS', clock.get_fps())
+            single_loop_run(dt)
 
-        for e in pygame.event.get():
-            if e.type == pygame.QUIT:
-                pygame.quit()
-                import sys
-                sys.exit()
 
-            mousepoint = pygame.mouse.get_pos()
+def single_loop_run(dt):
+    for e in pygame.event.get():
+        if e.type == pygame.QUIT:
+            pygame.quit()
+            import sys
+            sys.exit()
 
-            if e.type == pygame.MOUSEBUTTONDOWN:
-                hit_view = scene.current.hit(mousepoint)
-                logger.debug('hit %s' % hit_view)
-                if (hit_view is not None and
-                    not isinstance(hit_view, scene.Scene)):
-                    focus.set(hit_view)
-                    down_in_view = hit_view
-                    pt = hit_view.from_window(mousepoint)
-                    hit_view.mouse_down(e.button, pt)
-                else:
+        mousepoint = pygame.mouse.get_pos()
+
+        if e.type == pygame.MOUSEBUTTONDOWN:
+            hit_view = scene.current.hit(mousepoint)
+            logger.debug('hit %s' % hit_view)
+            if (hit_view is not None and not isinstance(hit_view, scene.Scene)):
+                focus.set(hit_view)
+                down_in_view = hit_view
+                pt = hit_view.from_window(mousepoint)
+                hit_view.mouse_down(e.button, pt)
+            else:
+                focus.set(None)
+        elif e.type == pygame.MOUSEBUTTONUP:
+            hit_view = scene.current.hit(mousepoint)
+            if hit_view is not None:
+                if down_in_view and hit_view != down_in_view:
+                    down_in_view.blurred()
                     focus.set(None)
-            elif e.type == pygame.MOUSEBUTTONUP:
-                hit_view = scene.current.hit(mousepoint)
-                if hit_view is not None:
-                    if down_in_view and hit_view != down_in_view:
-                        down_in_view.blurred()
-                        focus.set(None)
-                    pt = hit_view.from_window(mousepoint)
-                    hit_view.mouse_up(e.button, pt)
-                down_in_view = None
-            elif e.type == pygame.MOUSEMOTION:
-                if down_in_view and down_in_view.draggable:
-                    pt = down_in_view.from_window(mousepoint)
-                    down_in_view.mouse_drag(pt, e.rel)
-                else:
-                    scene.current.mouse_motion(mousepoint)
-            elif e.type == pygame.KEYDOWN:
-                if focus.view:
-                    focus.view.key_down(e.key, e.unicode)
-                else:
-                    scene.current.key_down(e.key, e.unicode)
-            elif e.type == pygame.KEYUP:
-                if focus.view:
-                    focus.view.key_up(e.key)
-                else:
-                    scene.current.key_up(e.key)
+                pt = hit_view.from_window(mousepoint)
+                hit_view.mouse_up(e.button, pt)
+            down_in_view = None
+        elif e.type == pygame.MOUSEMOTION:
+            if down_in_view and down_in_view.draggable:
+                pt = down_in_view.from_window(mousepoint)
+                down_in_view.mouse_drag(pt, e.rel)
+            else:
+                scene.current.mouse_motion(mousepoint)
+        elif e.type == pygame.KEYDOWN:
+            if focus.view:
+                focus.view.key_down(e.key, e.unicode)
+            else:
+                scene.current.key_down(e.key, e.unicode)
+        elif e.type == pygame.KEYUP:
+            if focus.view:
+                focus.view.key_up(e.key)
+            else:
+                scene.current.key_up(e.key)
 
-        scene.current.update(dt / 1000.0)
-        scene.current.draw()
-        window_surface.blit(scene.current.surface, (0, 0))
-        pygame.display.flip()
+    scene.current.update(dt / 1000.0)
+    scene.current.draw()
+    window_surface.blit(scene.current.surface, (0, 0))
+    pygame.display.flip()

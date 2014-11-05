@@ -8,7 +8,9 @@ A simple GUI framework for [Pygame](http://www.pygame.org).
 
     pip install https://github.com/hwmrocker/pygameui/archive/master.zip
 
-    There are no checks if pygame is installed or not, since you cannot install pygame vi pip on python3. The easisest way to install pygame, goto https://bitbucket.org/pygame/pygame get the sources, compile it and install it.
+    There are no checks if pygame is installed or not, since you cannot install pygame vi pip on python3. The easisest way to install pygame is
+
+    pip install hg+http://bitbucket.org/pygame/pygame
 
 ## Environment
 

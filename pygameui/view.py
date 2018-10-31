@@ -1,12 +1,12 @@
 import pygame
 
-import render
-import theme
-import callback
-import resource
-import focus
+from . import render
+from . import theme
+from . import callback
+from . import resource
+from . import focus
 
-import kvc
+from . import kvc
 
 
 class View(object):
@@ -216,6 +216,7 @@ class View(object):
         for child in self.children:
             child.stylize()
         style = theme.current.get_dict(self)
+<<<<<<< HEAD
         preserve_child = False
         try:
             preserve_child = getattr(theme.current, 'preserve_child')
@@ -224,6 +225,10 @@ class View(object):
 
         for key, val in style.iteritems():
             kvc.set_value_for_keypath(self, key, val, preserve_child)
+=======
+        for key, val in style.items():
+            kvc.set_value_for_keypath(self, key, val)
+>>>>>>> d7e667764342a17258e588dcbaf9fe3a28c7eb1e
         self.layout()
 
     def draw(self):
@@ -237,44 +242,41 @@ class View(object):
                             rect=pygame.Rect((0, 0), self.frame.size))
 
         for child in self.children:
-            if not child.hidden:
-                child.draw()
+            if child.hidden:
+                continue
 
-                topleft = child.frame.topleft
+            child.draw()
 
-                if child.shadowed:
-                    shadow_size = theme.current.shadow_size
-                    shadow_topleft = (topleft[0] - shadow_size // 2,
-                                      topleft[1] - shadow_size // 2)
-                    self.surface.blit(child.shadow_image, shadow_topleft)
+            topleft = child.frame.topleft
 
-                self.surface.blit(child.surface, topleft)
+            if child.shadowed:
+                shadow_size = theme.current.shadow_size
+                shadow_topleft = (topleft[0] - shadow_size // 2,
+                                  topleft[1] - shadow_size // 2)
+                self.surface.blit(child.shadow_image, shadow_topleft)
 
-                if child.border_color and child.border_widths is not None:
-                    if (type(child.border_widths) is int and
-                        child.border_widths > 0):
-                        pygame.draw.rect(self.surface, child.border_color,
-                                         child.frame, child.border_widths)
-                    else:
-                        tw, lw, bw, rw = child.get_border_widths()
+            self.surface.blit(child.surface, topleft)
 
-                        tl = (child.frame.left, child.frame.top)
-                        tr = (child.frame.right - 1, child.frame.top)
-                        bl = (child.frame.left, child.frame.bottom - 1)
-                        br = (child.frame.right - 1, child.frame.bottom - 1)
+            if child.border_color and child.border_widths is not None:
+                if (type(child.border_widths) is int and child.border_widths > 0):
+                    pygame.draw.rect(self.surface, child.border_color,
+                                     child.frame, child.border_widths)
+                else:
+                    tw, lw, bw, rw = child.get_border_widths()
 
-                        if tw > 0:
-                            pygame.draw.line(self.surface, child.border_color,
-                                             tl, tr, tw)
-                        if lw > 0:
-                            pygame.draw.line(self.surface, child.border_color,
-                                             tl, bl, lw)
-                        if bw > 0:
-                            pygame.draw.line(self.surface, child.border_color,
-                                             bl, br, bw)
-                        if rw > 0:
-                            pygame.draw.line(self.surface, child.border_color,
-                                             tr, br, rw)
+                    tl = (child.frame.left, child.frame.top)
+                    tr = (child.frame.right - 1, child.frame.top)
+                    bl = (child.frame.left, child.frame.bottom - 1)
+                    br = (child.frame.right - 1, child.frame.bottom - 1)
+
+                    if tw > 0:
+                        pygame.draw.line(self.surface, child.border_color, tl, tr, tw)
+                    if lw > 0:
+                        pygame.draw.line(self.surface, child.border_color, tl, bl, lw)
+                    if bw > 0:
+                        pygame.draw.line(self.surface, child.border_color, bl, br, bw)
+                    if rw > 0:
+                        pygame.draw.line(self.surface, child.border_color, tr, br, rw)
         return True
 
     def get_border_widths(self):
@@ -313,7 +315,7 @@ class View(object):
         self.children.append(child)
         child.parent = self
         child.parented()
-        import scene
+        from . import scene
         if scene.current is not None:
             child.stylize()
 

@@ -1,10 +1,10 @@
 import pygame
 
-import dialog
-import label
-import theme
-import button
-import window
+from . import dialog
+from . import label
+from . import theme
+from . import button
+from . import window
 
 
 OK = 1
@@ -103,7 +103,7 @@ class AlertView(dialog.DialogView):
 
 def show_alert(message, title='Info', buttons=OK):
     alert_view = AlertView(title, message, buttons)
-    import scene
+    from . import scene
     scene.current.add_child(alert_view)
     alert_view.focus()
     alert_view.center()

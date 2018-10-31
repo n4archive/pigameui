@@ -1,8 +1,8 @@
 import pygame
 
-import view
-import label
-import callback
+from . import view
+from . import label
+from . import callback
 
 
 class TextField(view.View):

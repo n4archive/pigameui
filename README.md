@@ -6,23 +6,25 @@ A simple GUI framework for [Pygame](http://www.pygame.org).
 
 ## Installation
 
-    pip install pygameui
+    pip install https://github.com/hwmrocker/pygameui/archive/master.zip
 
-While Pygame is listed as a dependency in our package metadata, you should
-[install it separately](http://www.pygame.org/install.html) ahead of time to
-avoid issues with libpng being improperly referenced, etc.
+    There are no checks if pygame is installed or not, since you cannot install pygame vi pip on python3. The easisest way to install pygame is
+
+    pip install hg+http://bitbucket.org/pygame/pygame
 
 ## Environment
 
-Tested on Mac OS X 10.7.3 running system Python 2.7.1 and Pygame installed via
-the "Lion apple supplied python" mpkg.  Please let me know if you have issues
-running this on other versions of Python and/or Pygame.
+Tested on Linux Mint 17 running system Python 3.4 and Pygame installed from source.  
 
-## Author
+## Original Author
 
 Brian Hammond (brian@fictorial.com)
 
 Copyright © 2012 Fictorial LLC.
+
+## Latest changes, Python 3 port
+
+Olaf Gladis (pygameui@gladis.org)
 
 ## Other
 

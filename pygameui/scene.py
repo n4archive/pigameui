@@ -1,10 +1,14 @@
-import view
-import window
-import focus
+from . import view
+from . import window
+from . import focus
 
 
 stack = []
 current = None
+
+
+def insert(position, scene):
+    stack.insert(position, scene)
 
 
 def push(scene):

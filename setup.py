@@ -4,8 +4,6 @@
 # This seems to be the recommended tool until 'distutils2' is completed.
 # See: http://pypi.python.org/pypi/distribute
 
-import distribute_setup
-distribute_setup.use_setuptools()
 from setuptools import setup
 
 # Find the version from the package metadata.
@@ -34,10 +32,9 @@ setup(
     version=package_version,
     author='Brian Hammond',
     author_email='brian@fictorial.com',
-    install_requires=['setuptools', 'pygame>=1.9.1'],
+    install_requires=['setuptools'],
     packages=['pygameui'],
     package_data={'pygameui': ['resources/*/*']},
-    scripts=['bin/pygameui-kitchensink.py'],
     description='GUI framework for Pygame',
     keywords="UI GUI Pygame button scrollbar progress slider user interface",
     license='MIT',
@@ -49,7 +46,6 @@ setup(
         'Operating System :: Microsoft :: Windows',
         'Operating System :: MacOS :: MacOS X',
         'Operating System :: POSIX :: Linux',
-        'Programming Language :: Python :: 2 :: Only',
         'Topic :: Desktop Environment',
         'Topic :: Games/Entertainment',
         'Topic :: Multimedia',

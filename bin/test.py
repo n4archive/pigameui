@@ -1,6 +1,6 @@
 import pygame
 import os
-import pigameui as ui
+import pygameui as ui
 import logging
 
 log_format = '%(asctime)-6s: %(name)s - %(levelname)s - %(message)s'

@@ -13,7 +13,7 @@ import re
 
 package_version = re.search(
     "__version__ = '([^']+)'",
-    open(os.path.join('pigameui', '__init__.py')).read()).group(1)
+    open(os.path.join('pygameui', '__init__.py')).read()).group(1)
 
 # Resources
 # - package_data is what to install. MANIFEST.in is what to bundle.
@@ -33,8 +33,8 @@ setup(
     author='Brian Hammond',
     author_email='brian@fictorial.com',
     install_requires=['setuptools'],
-    packages=['pigameui'],
-    package_data={'pigameui': ['resources/*/*']},
+    packages=['pygameui'],
+    package_data={'pygameui': ['resources/*/*']},
     description='GUI framework for Pygame',
     keywords="UI GUI Pygame button scrollbar progress slider user interface",
     license='MIT',

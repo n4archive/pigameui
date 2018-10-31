@@ -38,6 +38,7 @@ __version__ = '0.2.3'
 
 import pygame
 
+from . import pigame
 from .alert import AlertView, show_alert, OK, CANCEL
 from .button import Button
 from .callback import Signal
@@ -76,7 +77,7 @@ Rect = pygame.Rect
 window_surface = None
 
 
-def init(name='', window_size=(640, 480)):
+def init(name='', window_size=(320, 240)):
     logger.debug('init %s %s' % (__name__, __version__))
     pygame.init()
     pigame.init()
@@ -90,17 +91,20 @@ def init(name='', window_size=(640, 480)):
 
 
 def run():
-    clock = pygame.time.Clock()
-    elapsed = 0
-    while True:
-        dt = clock.tick(60)
-        elapsed += dt
-        if elapsed > 5000:
-            elapsed = 0
-            logger.debug('%d FPS', clock.get_fps())
-            if single_loop_run(dt):
-                import sys
-                sys.exit()
+    try:
+        clock = pygame.time.Clock()
+        elapsed = 0
+        while True:
+            dt = clock.tick(60)
+            elapsed += dt
+            if elapsed >500:
+                if single_loop_run(dt):
+                    import sys
+                    sys.exit()
+    except KeyboardInterrupt:
+        pigame.quit()
+        pygame.quit()
+        raise
 
 
 def single_loop_run(dt):
@@ -151,7 +155,7 @@ def single_loop_run(dt):
             else:
                 scene.current.key_up(e.key)
 
-    scene.current.update(dt / 1000.0)
+    scene.current.update(dt/1000.0)
     scene.current.draw()
     window_surface.blit(scene.current.surface, (0, 0))
     pygame.display.flip()

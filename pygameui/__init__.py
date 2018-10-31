@@ -79,6 +79,7 @@ window_surface = None
 def init(name='', window_size=(640, 480)):
     logger.debug('init %s %s' % (__name__, __version__))
     pygame.init()
+    pigame.init()
     logger.debug('pygame %s' % pygame.__version__)
     pygame.key.set_repeat(200, 50)
     global window_surface
@@ -105,8 +106,10 @@ def run():
 def single_loop_run(dt):
     assert len(scene.stack) > 0
     down_in_view = None
+    pigame.run()
     for e in pygame.event.get():
         if e.type == pygame.QUIT:
+            pigame.quit()
             pygame.quit()
             return True
 

@@ -18,10 +18,10 @@ Brian Hammond (brian@fictorial.com)
 
 Copyright © 2012 Fictorial LLC.
 
-## Latest changes, Python 3 port
+## Some changes, Python 3 port
 
 Olaf Gladis (pygameui@gladis.org)
 
-## Later changes, Adafruit Screen port
+## Latest changes, Updated hwmrocker's Port, Adafruit Screen port
 
 nift4

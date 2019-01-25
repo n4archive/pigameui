@@ -2,15 +2,11 @@
 
 A simple GUI framework for [Pygame](http://www.pygame.org).
 
-![](https://github.com/fictorial/pygameui/raw/master/screenshot.png)
 
 ## Installation
-
-    pip install https://github.com/hwmrocker/pygameui/archive/master.zip
-
-    There are no checks if pygame is installed or not, since you cannot install pygame vi pip on python3. The easisest way to install pygame is
-
-    pip install hg+http://bitbucket.org/pygame/pygame
+    git clone https://github.com/nift4/pigameui.git
+    cd pigameui
+    sudo python3 setup.py install
 
 ## Environment
 
@@ -26,6 +22,6 @@ Copyright © 2012 Fictorial LLC.
 
 Olaf Gladis (pygameui@gladis.org)
 
-## Other
+## Later changes, Raspberry Pi Port
 
-See the `simpler` branch for a much simpler version.
+nift4

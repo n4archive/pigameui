@@ -18,7 +18,7 @@ Tested on Raspian 9 with Pygame and Python3 installed from apt.
 
 ## Some changes, Python 3 port
 
-[Olaf Gladis (pygameui@gladis.org)](https://github.com/hwrocker)
+[Olaf Gladis (pygameui@gladis.org)](https://github.com/hwmrocker)
 
 ## Latest changes, Updated hwmrocker's Port, Adafruit Screen port
 

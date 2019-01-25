@@ -1,6 +1,6 @@
-# pygameui
+# pigameui
 
-A simple GUI framework for [Pygame](http://www.pygame.org).
+A simple GUI framework for [Pygame](http://www.pygame.org), running on a Raspberry Pi with a specific Aadafruit touchscreen.
 
 
 ## Installation
@@ -22,6 +22,6 @@ Copyright © 2012 Fictorial LLC.
 
 Olaf Gladis (pygameui@gladis.org)
 
-## Later changes, Raspberry Pi Port
+## Later changes, Adafruit Screen port
 
 nift4

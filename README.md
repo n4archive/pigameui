@@ -10,18 +10,16 @@ A simple GUI framework for [Pygame](http://www.pygame.org), running on a Raspber
 
 ## Environment
 
-Tested on Linux Mint 17 running system Python 3.4 and Pygame installed from source.  
+Tested on Raspian 9 with Pygame and Python3 installed from apt.
 
 ## Original Author
 
-Brian Hammond (brian@fictorial.com)
-
-Copyright © 2012 Fictorial LLC.
+[Brian Hammond (brian@fictorial.com) Copyright © 2012 Fictorial LLC.](https://github.com/fictorial)
 
 ## Some changes, Python 3 port
 
-Olaf Gladis (pygameui@gladis.org)
+[Olaf Gladis (pygameui@gladis.org)](https://github.com/hwrocker)
 
 ## Latest changes, Updated hwmrocker's Port, Adafruit Screen port
 
-nift4
+[nift4](https://git.io/nift4_profile)

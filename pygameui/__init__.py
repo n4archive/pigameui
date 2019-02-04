@@ -75,12 +75,13 @@ logger = logging.getLogger(__name__)
 
 Rect = pygame.Rect
 window_surface = None
+pitft = None
 
 
 def init(name='', window_size=(320, 240)):
     logger.debug('init %s %s' % (__name__, __version__))
     pygame.init()
-    pigame.init()
+    pitft = pigame.PiTft()
     logger.debug('pygame %s' % pygame.__version__)
     pygame.key.set_repeat(200, 50)
     global window_surface
@@ -102,7 +103,7 @@ def run():
                     import sys
                     sys.exit()
     except KeyboardInterrupt:
-        pigame.quit()
+        del(pitft)
         pygame.quit()
         raise
 
@@ -110,10 +111,10 @@ def run():
 def single_loop_run(dt):
     assert len(scene.stack) > 0
     down_in_view = None
-    pigame.run()
+    pitft.update()
     for e in pygame.event.get():
         if e.type == pygame.QUIT:
-            pigame.quit()
+            del(pitft)
             pygame.quit()
             return True
 

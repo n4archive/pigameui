@@ -1,4 +1,5 @@
-import pygame,pitft_touchscreen
+import pygame
+from . import pitft_touchscreen
 support_gpio = True
 try:
     import RPi.GPIO as GPIO

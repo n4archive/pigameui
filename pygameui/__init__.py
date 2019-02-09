@@ -75,13 +75,13 @@ logger = logging.getLogger(__name__)
 
 Rect = pygame.Rect
 window_surface = None
-pitft = None
+pitft = pigame.PiTft()
 
 
 def init(name='', window_size=(320, 240)):
     logger.debug('init %s %s' % (__name__, __version__))
     pygame.init()
-    pitft = pigame.PiTft()
+#webedit
     logger.debug('pygame %s' % pygame.__version__)
     pygame.key.set_repeat(200, 50)
     global window_surface

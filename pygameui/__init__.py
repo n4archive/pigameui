@@ -81,7 +81,6 @@ pitft = pigame.PiTft()
 def init(name='', window_size=(320, 240)):
     logger.debug('init %s %s' % (__name__, __version__))
     pygame.init()
-#webedit
     logger.debug('pygame %s' % pygame.__version__)
     pygame.key.set_repeat(200, 50)
     global window_surface
@@ -92,6 +91,7 @@ def init(name='', window_size=(320, 240)):
 
 
 def run():
+    global pitft
     try:
         clock = pygame.time.Clock()
         elapsed = 0
@@ -109,6 +109,7 @@ def run():
 
 
 def single_loop_run(dt):
+    global pitft
     assert len(scene.stack) > 0
     down_in_view = None
     pitft.update()

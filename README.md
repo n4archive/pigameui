@@ -4,6 +4,8 @@ A simple GUI framework for [Pygame](http://www.pygame.org), running on a Raspber
 
 
 ## Installation
+Be sure to have https://github.com/pigamedrv/pigame
+
     git clone https://github.com/nift4/pigameui.git
     cd pigameui
     sudo python3 setup.py install

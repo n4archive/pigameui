@@ -38,7 +38,8 @@ __version__ = '0.2.3'
 
 import pygame
 
-from . import pigame
+import pigame
+
 from .alert import AlertView, show_alert, OK, CANCEL
 from .button import Button
 from .callback import Signal
